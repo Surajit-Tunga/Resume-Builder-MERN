@@ -16,18 +16,18 @@ export const landingPageStyles = {
   desktopAuthButton: "relative group px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-200",
   desktopAuthButtonText: "relative",
   desktopAuthButtonOverlay: "absolute inset-0 bg-gradient-to-r from-fuchsia-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity",
-  mobileAuthButton: "w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-2xl",
+ // Mobile menu container
+mobileMenu: "md:hidden bg-white/95 backdrop-blur-lg w-full fixed top-16 left-0 right-0 z-40 shadow-lg border-b border-violet-100/50 transition-all duration-300 ease-in-out",
+mobileMenuContainer: "max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4",
 
-  // Mobile menu
-  // Mobile menu
-  // Mobile menu
-  mobileMenu: "md:hidden bg-white/95 backdrop-blur-lg w-full fixed top-16 left-0 right-0 z-40 shadow-lg border-b border-violet-100/50 transition-all duration-300 ease-in-out",
-  mobileMenuContainer: "max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4",
-  mobileUserInfo: "flex flex-col gap-4 py-2",
-  mobileUserWelcome: "text-violet-700 font-medium text-center py-2 text-base sm:text-lg",
-  mobileDashboardButton: "w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
-  mobileAuthButton: "w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
-  // Main content
+// User info
+mobileUserInfo: "flex flex-col gap-4 py-2",
+mobileUserWelcome: "text-violet-700 font-medium text-center py-2 text-base sm:text-lg",
+
+// Buttons (consistent design)
+mobileAuthButton: "px-3 py-1.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-medium rounded-lg text-sm transition-all hover:scale-105 hover:shadow-md hover:shadow-violet-200 active:scale-95 mx-auto",
+mobileDashboardButton: "px-3 py-1.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-medium rounded-lg text-sm transition-all hover:scale-105 hover:shadow-md hover:shadow-violet-200 active:scale-95 mx-auto",
+// Main content
   main: "pt-24",
 
   // Hero section
