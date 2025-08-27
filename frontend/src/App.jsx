@@ -1,13 +1,15 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
+import UserProvider from './context/UserContext'
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Landing/>} />
-    </Routes>
-    
+    <UserProvider>
+      <Routes>
+         <Route path='/' element={<Landing/>} />
+      </Routes>
+    </UserProvider>     
   )
 }
 
