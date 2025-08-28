@@ -4,6 +4,9 @@ import {landingPageStyles} from '../assets/dummystyle'
 import { ArrowRight, Download, LayoutTemplate, Menu, X, Zap } from 'lucide-react'
 import {UserContext} from '../context/UserContext'
 import { ProfileInfocard } from '../components/Cards'
+import Modal from '../components/Modal'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 const Landing = () => {
   const {user} = useContext(UserContext);
@@ -281,13 +284,26 @@ const Landing = () => {
           </div>
         </section>
       </main>
+
+      {/* Footer Sec */}
       <footer className={landingPageStyles.footer}>
         <div className={landingPageStyles.footerContainer}>
           <p className={landingPageStyles.footerText}>
             Crafted with <span className={landingPageStyles.footerHeart}>❤️</span> by{'Surajit'}
           </p>
         </div>
-      </footer>    
+      </footer> 
+
+      {/*Model For Login & Signup  */}
+      <Modal isOpen={openAuthModal} onClose={()=>{
+        setOpenAuthModal(false)
+        setCurrentPage("login")
+      }} hideHeader>
+        <div>
+          {currentPage==="login" && <Login setCurrentPage={setCurrentPage}/>}
+          {currentPage==="signUp" && <SignUp setCurrentPage={setCurrentPage}/>}
+        </div>
+      </Modal>
     </div>
   )
 }
