@@ -7,7 +7,7 @@ import { authStyles as styles } from '../assets/dummystyle'
 import { validateEmail } from '../utils/helper';
 import {Input} from '../components/Inputs'
 
-const Login = (setCurrentPage) => {
+const Login = ({setCurrentPage}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ const Login = (setCurrentPage) => {
 
   const handlelogin = async(e)=>{
     e.preventDefault()
-    if (!validateEmail){
+    if (!validateEmail(email)){
             setError('Please enter valid Mail');
             return;
         } if (!password) {
@@ -63,7 +63,7 @@ const Login = (setCurrentPage) => {
             
             <p className={styles.switchText}>
                  Don't have an account? {' '}
-                <button onClick={()=> setCurrentPage('signup')} type='button' className={styles.switchButton}>Sign Up</button>
+                <button onClick={() => setCurrentPage('signup')} type='button' className={styles.switchButton}>Sign Up</button>
             </p>
         </form>
     </div>

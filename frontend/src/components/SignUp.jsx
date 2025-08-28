@@ -21,7 +21,7 @@ const SignUp = ({setCurrentPage}) => {
     if(!fullName) {
         setError('Please enter Full Name');
         return;
-    } if (!validateEmail){
+    } if (!validateEmail(email)){
         setError('Please enter valid Mail');
         return;
     } if (!password) {
@@ -83,7 +83,7 @@ const SignUp = ({setCurrentPage}) => {
 
             <p className={styles.switchText}>
                 Already have an account? {' '}
-                <button onClick={()=> setCurrentPage('login')} type='button' className={styles.signupSwitchButton}>Sign In</button>
+                <button onClick={() => setCurrentPage('login')} type='button' className={styles.signupSwitchButton}>Sign In</button>
             </p>
         </form>
     </div>
