@@ -7,6 +7,9 @@ import axiosInstance from '../utils/axiosIntance'
 import { API_PATH } from '../utils/apiPaths'
 import { ResumeSummaryCard } from '../components/Cards'
 import toast from 'react-hot-toast'
+import moment from 'moment'
+import Modal from '../components/Modal'
+import CreateResumeForm from '../components/CreateResumeForm'
 
 const Dashboard = () => {
 
@@ -198,11 +201,39 @@ const Dashboard = () => {
               createdAt={resume.createdAt} 
               updatedAt={resume.updatedAt} 
               onSelect={()=> navigate(`/resume/${resume._id}`)} 
-              onDelete={(m)}/>
+              onDelete={()=> handleDeleteClick(resume._id)}
+              completion={resume.completion || 0}
+              isPremium = {resume.isPremium}
+              isNew ={moment().diff(moment(resume.createdAt), 'days')<7}                           
+              />
             ))}
           </div>
         )}
       </div>
+      {/* Create Modal */}
+      <Modal isOpen={openCreateModel}
+      onClose={()=> setOpenCreateModel(false)}
+      hideHeader
+      maxWidth='max-w-2xl'>
+        <div className='p-6'>
+          <div className={styles.modalHeader}>
+            <h3 className={styles.modalTitle}>Create New Resume</h3>
+            <button onClick={()=> setOpenCreateModel(false)}className={styles.modalCloseButton}>
+              X
+            </button>
+          </div>
+          <CreateResumeForm onSuccess={()=>{
+            setOpenCreateModel(false);
+            fetchAllResume();
+          }}/>
+        </div>
+      </Modal>
+
+      {/* Delete Modal */}
+      <Modal isOpen={showDeleteConfirm} onClose={()=> setshowDeleteConfirm(false)} title='Confirm Deletion'>
+
+      </Modal>
+
     </DashboardLayout>
   )
 }
