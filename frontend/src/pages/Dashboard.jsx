@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { LucideFilePlus } from 'lucide-react'
 import axiosInstance from '../utils/axiosIntance'
 import { API_PATH } from '../utils/apiPaths'
+import { ResumeSummaryCard } from '../components/Cards'
+import toast from 'react-hot-toast'
 
 const Dashboard = () => {
 
@@ -110,6 +112,29 @@ const Dashboard = () => {
     fetchAllResume();
   }, [])
 
+  const handleDeleteResume = async ()=>{
+    if(!resumeTodelete) return;
+
+    try {
+      await axiosInstance.delete(API_PATH.RESUME.DELETE(resumeTodelete))
+      toast.success('Resume Deleted Successfully')
+      fetchAllResume()
+    } 
+    catch (error) {
+      console.error('Error while deleting', error)
+      toast.error('Failed to delete resume')
+    }
+    finally {
+      setResumeToDelete(null)
+      setshowDeleteConfirm(false)
+    }
+  }
+
+  const handleDeleteClick = (id) =>{
+    setResumeToDelete(id)
+    setshowDeleteConfirm(true)
+  }
+
   return (
     <DashboardLayout>
       <div className={styles.container}>
@@ -147,6 +172,34 @@ const Dashboard = () => {
             <p className={styles.emptyText}>
               You have not created any resumes yet. Start building your professional resume now!
             </p>
+            <button className={styles.createButton} onClick={()=> setOpenCreateModel(true)}>
+              <div className={styles.createButtonOverlay}></div>
+              <span className={styles.createButtonContent}>
+                Create Your First Resume
+                <LucideFilePlus className='group-hover:translate-x-1 transition-transform' size={20}/>
+              </span>
+            </button>
+          </div>
+        )}
+        {/* GRID VIEW */}
+        {!loading && allResume.length > 0 && (
+          <div className={styles.grid}>
+            <div className={styles.newResumeCard} onClick={()=>setOpenCreateModel(true)}>
+              <div className={styles.newResumeIcon}>
+                <LucideFilePlus size={32} className='text-white'/>
+              </div>
+              <h3 className={styles.newResumeTitle}> Create New Resume</h3>
+              <p className={styles.newResumeText}>Start building your career</p>
+            </div>
+            {allResume.map((resume)=>(
+              <ResumeSummaryCard key={resume._id} 
+              imgUrl={resume.thumbnailLink} 
+              title={resume.title} 
+              createdAt={resume.createdAt} 
+              updatedAt={resume.updatedAt} 
+              onSelect={()=> navigate(`/resume/${resume._id}`)} 
+              onDelete={(m)}/>
+            ))}
           </div>
         )}
       </div>
