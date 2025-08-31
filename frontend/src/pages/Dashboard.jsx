@@ -96,9 +96,9 @@ const Dashboard = () => {
   const fetchAllResume = async ()=>{
     try {
       setloading(true)
-      const response = axiosInstance.get(API_PATH.RESUME.GET_ALL);
+      const response = await axiosInstance.get(API_PATH.RESUME.GET_ALL);
       //Add completion percentage to each resume
-      const resumeWithCompletion = (await response).data.map(resume =>({
+      const resumeWithCompletion = response.data.map(resume =>({
         ...resume,
         completion: calculateCompletion(resume)
       }))
@@ -106,6 +106,11 @@ const Dashboard = () => {
     } 
     catch (error) {
       console.error('Error while fetching resumes', error)
+    if (error.code === 'ECONNABORTED') {
+      toast.error('Request timed out. Please check if server is running.')
+    } else {
+      toast.error('Failed to fetch resumes')
+    }
     }
     finally{
       setloading(false)
