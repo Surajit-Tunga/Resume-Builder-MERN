@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DashboardLayout from '../components/DashboardLayout'
 import { dashboardStyles as styles } from '../assets/dummystyle'
 import { useNavigate } from 'react-router-dom'
-import { LucideFilePlus } from 'lucide-react'
+import { LucideFilePlus, LucideTrash2 } from 'lucide-react'
 import axiosInstance from '../utils/axiosIntance'
 import { API_PATH } from '../utils/apiPaths'
 import { ResumeSummaryCard } from '../components/Cards'
@@ -230,8 +230,19 @@ const Dashboard = () => {
       </Modal>
 
       {/* Delete Modal */}
-      <Modal isOpen={showDeleteConfirm} onClose={()=> setshowDeleteConfirm(false)} title='Confirm Deletion'>
-
+      <Modal isOpen={showDeleteConfirm} onClose={()=> setshowDeleteConfirm(false)} title='Confirm Deletion'
+        showActionBtn actionBtnText='Delete' actionbtnClassName = 'bg-red-600 hover:bg-red-700' onActionClick={handleDeleteResume}>
+          <div className='p-4'>
+            <div className='f;ex flex-col items-center text-center'>
+              <div className={styles.deleteIconWrapper}>
+                <LucideTrash2 className='text-orange-600'/>
+              </div>
+              <h3 className={styles.deleteTitle}>Delete Resume</h3>
+              <p className={styles.deleteText}>
+                Are you sure you want to delete this resume?
+              </p>
+            </div>
+          </div>
       </Modal>
 
     </DashboardLayout>
