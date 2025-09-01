@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [openCreateModel, setOpenCreateModel] = useState(false);
   const [allResume, setAllResume] = useState([]);
   const [loading, setloading] = useState(true);
-  const[resumeTodelete, setResumeToDelete]= useState(null);
+  const[resumeToDelete, setResumeToDelete]= useState(null);
   const [showDeleteConfirm, setshowDeleteConfirm] =useState(false);
 
     // Calculate completion percentage for a resume
@@ -121,10 +121,10 @@ const Dashboard = () => {
   }, [])
 
   const handleDeleteResume = async ()=>{
-    if(!resumeTodelete) return;
+    if(!resumeToDelete) return;
 
     try {
-      await axiosInstance.delete(API_PATH.RESUME.DELETE(resumeTodelete))
+      await axiosInstance.delete(API_PATH.RESUME.DELETE(resumeToDelete))
       toast.success('Resume Deleted Successfully')
       fetchAllResume()
     } 
@@ -238,7 +238,7 @@ const Dashboard = () => {
       <Modal isOpen={showDeleteConfirm} onClose={()=> setshowDeleteConfirm(false)} title='Confirm Deletion'
         showActionBtn actionBtnText='Delete' actionbtnClassName = 'bg-red-600 hover:bg-red-700' onActionClick={handleDeleteResume}>
           <div className='p-4'>
-            <div className='f;ex flex-col items-center text-center'>
+            <div className="p-6 flex flex-col items-center text-center space-y-4">
               <div className={styles.deleteIconWrapper}>
                 <LucideTrash2 className='text-orange-600'/>
               </div>

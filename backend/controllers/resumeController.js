@@ -120,7 +120,7 @@ export const getUserResumeById =async(req, res)=>{
 //Update Resume
 export const updateResume =async(req, res)=>{
     try{
-        const resume = await Resume.findOne({_id: req.params.id, userID: req.user._id});
+        const resume = await Resume.findOne({_id: req.params.id, userId: req.user._id});
         if(!resume){
             return res.status(404).json({message: "Resume not found"});
         } 
@@ -140,7 +140,7 @@ export const updateResume =async(req, res)=>{
 //Delete Resume
 export const deleteResume =async(req, res)=>{
     try{
-        const resume = await Resume.findOne({_id: req.params.id, userID: req.user._id});
+        const resume = await Resume.findOne({_id: req.params.id, userId: req.user._id});
         if(!resume){
             return res.status(404).json({message: "Resume not found"});
         } 
@@ -169,7 +169,7 @@ export const deleteResume =async(req, res)=>{
         //Delete from DB
         const deleted = await Resume.findOneAndDelete({
             _id: req.params.id, 
-            userID: req.user._id
+            userId: req.user._id
         });
         if (!deleted){
             return res.status(404).json({message: "Resume not found"});
@@ -181,4 +181,5 @@ export const deleteResume =async(req, res)=>{
             error: error.message
         });
     }
+
 }
