@@ -21,7 +21,8 @@ A modern web application to create, manage, and export professional resumes with
 
 1. Clone the repository:
    ```
-   git clone https://github.com/Surajit-Tunga/resume-builder.git
+   git clone https://github.com/Surajit-Tunga/Resume-Builder-MERN.git
+
    ```
 2. Install dependencies:
    ```
