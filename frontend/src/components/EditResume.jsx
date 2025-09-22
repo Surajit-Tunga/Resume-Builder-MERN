@@ -8,6 +8,7 @@ import axiosInstance from '../utils/axiosIntance'
 import { API_PATH } from '../utils/apiPaths'
 import toast from 'react-hot-toast'
 import { fixTailwindColors } from "../utils/colors"
+import html2pdf from 'html2pdf.js'
 
 //Resize observar
 
@@ -536,23 +537,7 @@ const EditResume = () => {
       setIsLoading(false)
     }
   }
-
-  //DELETE RESUME
-
-  const handleDeleteResume = async () => {
-    try {
-      setIsLoading(true)
-      await axiosInstance.delete(API_PATH.RESUME.DELETE(resumeId))
-      toast.success("Resume deleted successfully")
-      navigate("/dashboard")
-    } catch (error) {
-      console.error("Error deleting resume:", error)
-      toast.error("Failed to delete resume")
-    } finally {
-      setIsLoading(false)
-    }
-  }
-  const updateResumeDetails = async (thumbnailLink) => {
+ const updateResumeDetails = async (thumbnailLink) => {
     try {
       setIsLoading(true)
 
@@ -568,6 +553,22 @@ const EditResume = () => {
       setIsLoading(false)
     }
   }
+  //DELETE RESUME
+
+  const handleDeleteResume = async () => {
+    try {
+      setIsLoading(true)
+      await axiosInstance.delete(API_PATH.RESUME.DELETE(resumeId))
+      toast.success("Resume deleted successfully")
+      navigate("/dashboard")
+    } catch (error) {
+      console.error("Error deleting resume:", error)
+      toast.error("Failed to delete resume")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+ 
 
   const downloadPDF = async () => {
     const element = resumeDownloadRef.current;
@@ -645,7 +646,7 @@ const EditResume = () => {
       fetchResumeDetailsById()
     }
   }, [resumeId])
-  // 3.44
+
 
 
   return (

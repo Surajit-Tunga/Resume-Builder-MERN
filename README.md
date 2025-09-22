@@ -34,17 +34,14 @@ A modern web application to create, manage, and export professional resumes with
 
 - Start the development server:
   ```
+  cd backend
   npm start
   ```
 - to start only the frontend (from the `frontend` directory):
   ```
+  cd frontend
   npm run dev
   ```
 
 
-## Project Structure
-
-- `frontend/` - React frontend for building and managing resumes
-- `backend/` - (If present) API server for storing resumes
-
-- Happy coading 
+- Happy coading...s 
