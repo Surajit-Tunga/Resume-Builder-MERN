@@ -18,6 +18,7 @@ import StepProgress from "../components/StepProgress"
 import RenderResume from "../components/RenderResume"
 import Modal from "../components/Modal"
 import ThemeSelector from "../components/ThemeSelector"
+import './A4.css'
 import {
   AdditionalInfoForm,
   CertificationInfoForm,
