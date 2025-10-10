@@ -13,7 +13,7 @@ const ThemeSelector = ({ selectedTheme, setSelectedTheme, resumeData, onClose })
   const resumeRef = useRef(null)
   const [baseWidth, setBaseWidth] = useState(800)
 
-  // FIX: Properly initialize selectedTemplate based on current theme
+  
   const initialIndex = resumeTemplates.findIndex(t => t.id === selectedTheme);
   const [selectedTemplate, setSelectedTemplate] = useState({
     theme: selectedTheme || resumeTemplates[0]?.id || "",
