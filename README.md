@@ -4,29 +4,6 @@ A full-stack web application to easily create, edit, and export polished profess
 
 ---
 
-## Project Structure
-
-```
-resume-builder/
-├── backend/              # Express.js backend (Node.js)
-│   ├── models/           # Mongoose models
-│   ├── routes/           # API routes (auth, resume, user)
-│   ├── controllers/      # Controllers for business logic
-│   ├── middleware/       # Auth & error middleware
-│   └── server.js         # Entry point for backend server
-├── frontend/             # React frontend
-│   ├── src/
-│   │   ├── components/   # Reusable UI components
-│   │   ├── pages/        # Page components (Dashboard, Editor, etc.)
-│   │   ├── redux/        # Redux store and slices
-│   │   └── App.js        # Main app file
-│   └── public/
-├── package.json
-└── README.md
-```
-
----
-
 ## Features
 
 - Sign up, log in, and manage multiple resumes
