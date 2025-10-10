@@ -1,4 +1,4 @@
-import { Check } from "react-feather" // Import Check componen
+import { Check } from "react-feather" 
 import { shimmerStyle } from "../assets/dummystyle";
 
 const StepProgress = ({ progress }) => {

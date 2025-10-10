@@ -44,4 +44,4 @@ A modern web application to create, manage, and export professional resumes with
   ```
 
 
-- Happy coading...s 
+- Happy coading...
