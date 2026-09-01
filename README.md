@@ -1,4 +1,4 @@
-# Resume Builder App
+# ResumeXpert
 
 A full-stack web application to easily create, edit, and export polished professional resumes.
 
